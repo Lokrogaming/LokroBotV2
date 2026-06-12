@@ -12,7 +12,7 @@ export const botConfig = {
   // - "invisible" = appears offline
   presence: {
     // Current online state shown on Discord.
-    status: "online",
+    status: "dnd",
 
     // Activity lines shown under the bot name.
     // `type` number mapping from Discord:
@@ -25,9 +25,9 @@ export const botConfig = {
     activities: [
       {
         // Text users will see (example: "Playing /help | Titan Bot").
-        name: "Made with ❤️",
+        name: "V2 of the OG LokroBot",
         // Activity type number (0 = Playing).
-        type: 0, 
+        type: 1, 
       },
     ],
   },
@@ -72,10 +72,10 @@ export const botConfig = {
     applicationCooldown: 24, 
 
     // Auto-delete denied applications after this many days.
-    deleteDeniedAfter: 7, 
+    deleteDeniedAfter: 28, 
 
     // Auto-delete approved applications after this many days.
-    deleteApprovedAfter: 30, 
+    deleteApprovedAfter: 90, 
 
     // Role IDs allowed to manage applications.
     managerRoles: [], // Will be populated from environment or database
@@ -136,9 +136,9 @@ export const botConfig = {
     },
     footer: {
       // Default footer text used in bot embeds.
-      text: "Titan Bot",
+      text: "LokroBotV2 by Lokrogaming",
       // Footer icon URL (null = no icon).
-      icon: null,
+      icon: 'https://lokrogaming.github.io/src/assets/logo.png',
     },
     // Default thumbnail URL for embeds (null = no thumbnail).
     thumbnail: null,
@@ -164,7 +164,7 @@ export const botConfig = {
     },
 
     // Starting balance for new users.
-    startingBalance: 0,
+    startingBalance: 100,
 
     // Maximum bank amount before upgrades (if upgrades are used).
     baseBankCapacity: 100000,
