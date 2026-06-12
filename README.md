@@ -1,8 +1,11 @@
-# TitanBot - Ultimate Discord Bot
+# LokroBotV2 - Ultimate Discord Bot
 
-**TitanBot** is a powerful, feature-rich Discord bot designed to enhance your server experience with comprehensive moderation tools, engaging economy systems, utility features, and much more. Built with modern Discord.js v14 and PostgreSQL for optimal performance and data persistence.
+##Note:
+`LokroBotV2 is forked from codebymitch's Titanbot project. It is currently in further development by Lokrogaming with not only better but also new commands`
 
-[![Support Server](https://img.shields.io/badge/-Support%20Server-%235865F2?logo=discord&logoColor=white&style=flat-square&logoWidth=20)](https://discord.gg/8kJBYhTGW9)
+**LokroBotV2** is a powerful, feature-rich Discord bot designed to enhance your server experience with comprehensive moderation tools, engaging economy systems, utility features, and much more. Built with modern Discord.js v14 and PostgreSQL for optimal performance and data persistence.
+
+[![Support Server](https://img.shields.io/badge/-Support%20Server-%235865F2?logo=discord&logoColor=white&style=flat-square&logoWidth=20)](https://lgg.lovable.app/s/lgg)
 [![Discord.js](https://img.shields.io/npm/v/discord.js?style=flat-square&labelColor=%23202225&color=%23202225&logo=npm&logoColor=white&logoWidth=20)](https://www.npmjs.com/package/discord.js)
 ![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-%23336791?logo=postgresql&logoColor=white&style=flat-square&logoWidth=20)
 
@@ -11,7 +14,7 @@
 - [Features Overview](#features-overview)
 - [Quick Setup](#quick-setup)
 - [Manual Installation Steps](#manual-installation-steps)
-- [Support Server](https://discord.gg/QnWNz2dKCE)
+- [Support Server](https://lgg.lovable.app/s/lgg)
 - [Required Bot Intents](#bot-intents)
 - [Contributing](#contributing)
 
@@ -86,21 +89,15 @@ TitanBot offers a complete suite of tools for Discord server management and comm
 </tr>
 </table>
 
-<a name="quick-setup"></a>
-## Quick Setup (Recommended for non-coders)
-
-### Video Tutorial
-For a detailed step-by-step setup guide, watch our comprehensive video tutorial:
-[**TitanBot Setup Tutorial**](https://www.youtube.com/@TouchDisc)
 
 ## Docker Deployment (Recommended)
 
-TitanBot is fully containerized for easy deployment.
+LokroBotV2 is fully containerized for easy deployment.
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/codebymitch/TitanBot.git
-   cd TitanBot
+   git clone https://github.com/Lokrogaming/LokroBotV2.git
+   cd LokroBotV2
    ```
 
 2. **Configure environment variables:**
@@ -118,7 +115,7 @@ This will start both the bot and a persistent PostgreSQL database.
 The bot is automatically published to GitHub Container Registry on every push to main.
 
 ```bash
-docker pull ghcr.io/codebymitch/titanbot:main
+docker pull ghcr.io/Lokrogaming/LokroBotV2:main
 ```
 
 <a name="manual-installation-steps"></a>
@@ -131,8 +128,8 @@ docker pull ghcr.io/codebymitch/titanbot:main
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/codebymitch/TitanBot.git
-   cd TitanBot
+   git clone https://github.com/Lokrogaming/LokroBotV2.git
+   cd LokroBotV2
    ```
 
 2. **Install Dependencies**
@@ -185,10 +182,10 @@ docker pull ghcr.io/codebymitch/titanbot:main
 4. **Setup PostgreSQL Database** (Optional but recommended)
    ```bash
    # Create database and user
-   createdb titanbot
-   createuser titanbot
-   psql -c "ALTER USER titanbot PASSWORD 'yourpassword';"
-   psql -c "GRANT ALL PRIVILEGES ON DATABASE titanbot TO titanbot;"
+   createdb lokrobot
+   createuser lokrobot
+   psql -c "ALTER USER lokrobot PASSWORD 'yourpassword';"
+   psql -c "GRANT ALL PRIVILEGES ON DATABASE lokrobot TO lokrobot;"
    ```
 
 5. **Test Database Connection**
@@ -203,7 +200,7 @@ docker pull ghcr.io/codebymitch/titanbot:main
 <a name="bot-intents"></a>
 
 ## Required Bot Intents
-TitanBot requires the following Discord intents:
+LokroBotV2 requires the following Discord intents:
 - **Guilds**
 - **Guild Messages**
 - **Message Content**
@@ -252,6 +249,6 @@ TitanBot is released under the MIT License. See [LICENSE](LICENSE) for details.
 
 ## Thank You
 
-Thank you for choosing TitanBot for your Discord server! We're constantly working to improve and add new features based on community feedback.
+Thank you for choosing LokroBotV2 for your Discord server! We're constantly working to improve and add new features based on community feedback.
 
 *Last updated: May 2026*
