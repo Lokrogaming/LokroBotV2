@@ -2,6 +2,7 @@
 
 **Note**:
 `LokroBotV2 is forked from codebymitch's Titanbot project. It is currently in further development by Lokrogaming with not only better but also new commands`
+The link to the repo can be found [here](https://github.com/codebymitch/TitanBot)
 
 **LokroBotV2** is a powerful, feature-rich Discord bot designed to enhance your server experience with comprehensive moderation tools, engaging economy systems, utility features, and much more. Built with modern Discord.js v14 and PostgreSQL for optimal performance and data persistence.
 
@@ -149,10 +150,10 @@ docker pull ghcr.io/Lokrogaming/LokroBotV2:main
    GUILD_ID=your_discord_guild_id_here
 
    # PostgreSQL Configuration (Primary Database)
-   POSTGRES_URL=postgresql://postgres:yourpassword@localhost:5432/titanbot
+   POSTGRES_URL=postgresql://postgres:yourpassword@localhost:5432/lokrobot
    POSTGRES_HOST=localhost
    POSTGRES_PORT=5432
-   POSTGRES_DB=titanbot
+   POSTGRES_DB=lokrobot
    POSTGRES_USER=postgres
    POSTGRES_PASSWORD=yourpassword
    ```
@@ -161,7 +162,7 @@ docker pull ghcr.io/Lokrogaming/LokroBotV2:main
    - `NODE_ENV=production`
    - `LOG_LEVEL=warn` for a clean production console (critical issues + startup status)
    - `LOG_LEVEL=info` if you want more detailed operational logs
-   - If your chosen `PORT` is already used, TitanBot automatically tries the next port(s)
+   - If your chosen `PORT` is already used, LokroBot automatically tries the next port(s)
 
    Environment options reference:
    - `NODE_ENV`: `development`, `production`, `test` (any non-`production` value is treated as non-production)
