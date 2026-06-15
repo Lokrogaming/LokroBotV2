@@ -374,7 +374,7 @@ export function createError(message, type = ErrorTypes.UNKNOWN, userMessage = nu
 
 export default {
     ErrorTypes,
-    TitanBotError,
+    LokroBotError,
     categorizeError,
     getUserMessage,
     handleInteractionError,

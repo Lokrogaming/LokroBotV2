@@ -27,7 +27,7 @@ export default {
         try {
             
             if (!interaction.inGuild()) {
-                throw new TitanBotError(
+                throw new LokroBotError(
                     'Giveaway command used outside guild',
                     ErrorTypes.VALIDATION,
                     'This command can only be used in a server.',
@@ -37,7 +37,7 @@ export default {
 
             
             if (!interaction.member.permissions.has(PermissionFlagsBits.ManageGuild)) {
-                throw new TitanBotError(
+                throw new LokroBotError(
                     'User lacks ManageGuild permission',
                     ErrorTypes.PERMISSION,
                     "You need the 'Manage Server' permission to reroll a giveaway.",
@@ -51,7 +51,7 @@ export default {
 
             
             if (!messageId || !/^\d+$/.test(messageId)) {
-                throw new TitanBotError(
+                throw new LokroBotError(
                     'Invalid message ID format',
                     ErrorTypes.VALIDATION,
                     'Please provide a valid message ID.',

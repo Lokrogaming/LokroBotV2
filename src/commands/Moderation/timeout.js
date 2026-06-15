@@ -72,7 +72,7 @@ export default {
                 );
             }
             if (targetUser.id === client.user.id) {
-                throw new TitanBotError(
+                throw new LokroBotError(
                     "Cannot timeout bot",
                     ErrorTypes.VALIDATION,
                     "You cannot timeout the bot."

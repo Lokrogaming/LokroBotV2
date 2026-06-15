@@ -222,7 +222,7 @@ export function formatChannelName(template, variables) {
 export async function initializeJoinToCreate(client, guildId, channelId, options = {}) {
     try {
         if (!client || !client.db) {
-            throw new LokroBotError
+            throw new LokroBotError(
                 'Database service not available',
                 ErrorTypes.DATABASE,
                 'System error occurred. Please try again.'
@@ -577,7 +577,7 @@ export async function logConfigurationChange(client, guildId, userId, action, de
 export async function createTemporaryChannel(guild, member, options = {}) {
     try {
         if (!guild || !member) {
-            throw new TitanBotError(
+            throw new LokroBotError(
                 'Invalid guild or member',
                 ErrorTypes.VALIDATION
             );

@@ -25,7 +25,7 @@ export default {
     try {
       
       if (!interaction.member.permissions.has(PermissionFlagsBits.KickMembers)) {
-        throw new TitanBotError(
+        throw new LokroBotError(
           "User lacks permission",
           ErrorTypes.PERMISSION,
           "You do not have permission to kick members."

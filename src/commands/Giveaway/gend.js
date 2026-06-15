@@ -29,7 +29,7 @@ export default {
         try {
             
             if (!interaction.inGuild()) {
-                throw new TitanBotError(
+                throw new LokroBotError(
                     'Giveaway command used outside guild',
                     ErrorTypes.VALIDATION,
                     'This command can only be used in a server.',

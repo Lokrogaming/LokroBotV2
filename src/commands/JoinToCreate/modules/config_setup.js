@@ -30,7 +30,7 @@ export default {
         const currentConfig = await getJoinToCreateConfig(client, guildId);
 
         if (!currentConfig.triggerChannels.includes(triggerChannel.id)) {
-            throw new TitanBotError(
+            throw new LokroBotError(
                 `Channel ${triggerChannel.id} is not a Join to Create trigger`,
                 ErrorTypes.VALIDATION,
                 `${triggerChannel} is not configured as a Join to Create trigger channel.`

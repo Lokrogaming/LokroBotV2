@@ -305,7 +305,7 @@ export async function saveUserLevelData(client, guildId, userId, data) {
     await client.db.set(key, sanitizedData);
   } catch (error) {
     logger.error(`Error saving user level data for ${userId}:`, error);
-    if (error instanceof TitanBotError) throw error;
+    if (error instanceof LokroBotError) throw error;
     throw new LokroBotError(
       `Failed to save user data: ${error.message}`,
       ErrorTypes.DATABASE,

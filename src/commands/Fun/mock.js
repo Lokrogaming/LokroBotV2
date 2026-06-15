@@ -24,7 +24,7 @@ export default {
       
       
       if (!originalText || originalText.trim().length === 0) {
-        throw new TitanBotError(
+        throw new LokroBotError(
           'Empty text provided to mock command',
           ErrorTypes.USER_INPUT,
           'Please provide some text to mock!'

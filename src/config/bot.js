@@ -24,7 +24,7 @@ export const botConfig = {
     // 5 = Competing
     activities: [
       {
-        // Text users will see (example: "Playing /help | Titan Bot").
+        // Text users will see (example: "Playing /help | Lokro Bot").
         name: "V2 of the OG LokroBot",
         // Activity type number (0 = Playing).
         type: 1, 
