@@ -1,7 +1,7 @@
 import { SlashCommandBuilder, PermissionFlagsBits, MessageFlags } from 'discord.js';
 import { errorEmbed, successEmbed } from '../../utils/embeds.js';
 import { logger } from '../../utils/logger.js';
-import { TitanBotError, ErrorTypes, handleInteractionError } from '../../utils/errorHandler.js';
+import { LokroBotError, ErrorTypes, handleInteractionError } from '../../utils/errorHandler.js';
 import { getGuildGiveaways, saveGiveaway } from '../../utils/giveaways.js';
 import { 
     selectWinners,
@@ -68,7 +68,7 @@ export default {
             const giveaway = giveaways.find(g => g.messageId === messageId);
 
             if (!giveaway) {
-                throw new TitanBotError(
+                throw new LokroBotError(
                     `Giveaway not found: ${messageId}`,
                     ErrorTypes.VALIDATION,
                     "No giveaway was found with that message ID in the database.",
@@ -78,7 +78,7 @@ export default {
 
             
             if (!giveaway.isEnded && !giveaway.ended) {
-                throw new TitanBotError(
+                throw new LokroBotError(
                     `Giveaway still active: ${messageId}`,
                     ErrorTypes.VALIDATION,
                     "This giveaway is still active. Please use `/gend` to end it first.",
@@ -89,7 +89,7 @@ export default {
             const participants = giveaway.participants || [];
             
             if (participants.length < giveaway.winnerCount) {
-                throw new TitanBotError(
+                throw new LokroBotError(
                     `Insufficient participants for reroll: ${participants.length} < ${giveaway.winnerCount}`,
                     ErrorTypes.VALIDATION,
                     "Not enough entries to pick the required number of winners.",
