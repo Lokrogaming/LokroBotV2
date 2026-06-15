@@ -13,7 +13,7 @@ import { checkBirthdays } from './services/birthdayService.js';
 import { checkGiveaways } from './services/giveawayService.js';
 import { loadCommands, registerCommands as registerSlashCommands } from './handlers/commandLoader.js';
 
-class TitanBot extends Client {
+class LokroBot extends Client {
   constructor() {
     super({
       intents: [
