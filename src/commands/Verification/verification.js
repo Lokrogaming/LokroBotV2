@@ -186,19 +186,34 @@ async function handleSetup(interaction, guild, client) {
         title: "✅ Server Verification",
         description: message,
         color: getColor('success')
+        footer: 'Click the **grey** button to verify'
     });
 
-    const verifyButton = new ActionRowBuilder().addComponents(
+    const fakeVerifyButton1 = new ActionRowBuilder().addComponents(
+        new ButtonBuilder()
+            .setCustomId("verify_user_fake1")
+            .setLabel(buttonText)
+            .setStyle(ButtonStyle.Success)
+            .setEmoji("✅")
+    );
+    const VerifyButton = new ActionRowBuilder().addComponents(
         new ButtonBuilder()
             .setCustomId("verify_user")
             .setLabel(buttonText)
-            .setStyle(ButtonStyle.Success)
+            .setStyle(ButtonStyle.Secondary)
+            .setEmoji("✅")
+    );
+    const fakeVerifyButton2 = new ActionRowBuilder().addComponents(
+        new ButtonBuilder()
+            .setCustomId("verify_user_fake2")
+            .setLabel(buttonText)
+            .setStyle(ButtonStyle.cta)
             .setEmoji("✅")
     );
 
     const verifyMessage = await verificationChannel.send({
         embeds: [verifyEmbed],
-        components: [verifyButton]
+        components: [verifyButton, fakeVerifyButton1, fakeVerifyButton2]
     });
 
     guildConfig.verification = {
