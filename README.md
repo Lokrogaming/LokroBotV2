@@ -22,7 +22,7 @@ The link to the repo can be found [here](https://github.com/codebymitch/TitanBot
 <a name="features-overview"></a>
 ## Features Overview
 
-TitanBot offers a complete suite of tools for Discord server management and community engagement:
+LokroBot offers a complete suite of tools for Discord server management and community engagement:
 
 <table>
 <tr>
