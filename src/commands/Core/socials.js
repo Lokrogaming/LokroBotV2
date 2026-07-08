@@ -6,27 +6,36 @@ import { InteractionHelper } from '../../utils/interactionHelper.js';
 export default {
     data: new SlashCommandBuilder()
     .setName("socials")
-    .setDescription("View Lokro's Socials"),
+    .setDescription("View Lokro's Socials")
+    .addSubcommand((subcommand) =>
+        subcommand
+            .setName("lokrogamer")
+            .setDescription("Lokro's socials")
+    )
+    .addSubcommand((subcommand) =>
+        subcommand
+            .setName("LS-Leon-Sprenger")
+            .setDescription("View LS|Leon Sprenger's Socials")
+    ),
 
   async execute(interaction) {
     try {
       await InteractionHelper.safeDefer(interaction);
       
-      const totalGuilds = interaction.client.guilds.cache.size;
-      const totalMembers = interaction.client.guilds.cache.reduce(
-        (acc, guild) => acc + guild.memberCount,
-        0,
-      );
-      const nodeVersion = process.version;
+      const { options, guild, member } = interaction;
+      const subcommand = options.getSubcommand();
 
-      const embed = createEmbed({ title: "📊 System Statistics", description: "Real-time performance metrics." }).addFields(
+        if (subcommand === "lokrogamer") {
+      const embed = createEmbed({ title: "Viewing Lokrogamer's socials", description: "Socials:" }).addFields(
         { name: "Twitch", value: `<https://twitch.tv/lokrogamer>`, inline: true },
         { name: "Youtube", value: `<https://youtube.com/c/lokrogamer>`, inline: true },
         { name: "Guns.lol", value: `<https://guns.lol/lokrogamer>`, inline: true },
         { name: "Website", value: `<https://lokrogaming.github.io>`, inline: true },
         
       );
-
+        } else if (subcommand === "LS-Leon-Sprenger") {
+            const embed = createEmbed({ title: "Viewing Ls|Leon Sprenger's socials", description: "Failed to execute /socials. **No links specified**", color: "#ff0000" })
+        }
       await InteractionHelper.safeEditReply(interaction, { embeds: [embed] });
     } catch (error) {
       logger.error('Stats command error:', error);
