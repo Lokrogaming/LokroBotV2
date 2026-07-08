@@ -33,14 +33,17 @@ export default {
         { name: "Website", value: `<https://lokrogaming.github.io>`, inline: true },
         
       );
-        } else if (subcommand === "ls-leon-sprenger") {
-            const embed = createEmbed({ title: "Viewing Ls|Leon Sprenger's socials", description: "Failed to execute /socials. **No links specified**", color: "#ff0000" })
-        }
+            
       await InteractionHelper.safeEditReply(interaction, { embeds: [embed] });
+        } else if (subcommand === "ls-leon-sprenger") {
+            const embed = createEmbed({ title: "Viewing Ls|Leon Sprenger's socials", description: "Failed to execute /socials. **No links specified**", color: "#ff0000" });
+            
+      await InteractionHelper.safeEditReply(interaction, { embeds: [embed] });
+        }
     } catch (error) {
       logger.error('Stats command error:', error);
       return InteractionHelper.safeEditReply(interaction, {
-        embeds: [createEmbed({ title: 'System Error', description: 'Could not fetch system statistics.', color: 'error' })],
+        embeds: [createEmbed({ title: 'System Error', description: 'Could not fetch socials.', color: 'error' })],
         flags: MessageFlags.Ephemeral,
       });
     }
