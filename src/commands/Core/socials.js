@@ -14,7 +14,7 @@ export default {
     )
     .addSubcommand((subcommand) =>
         subcommand
-            .setName("LS-Leon-Sprenger")
+            .setName("ls-leon-sprenger")
             .setDescription("View LS|Leon Sprenger's Socials")
     ),
 
@@ -33,7 +33,7 @@ export default {
         { name: "Website", value: `<https://lokrogaming.github.io>`, inline: true },
         
       );
-        } else if (subcommand === "LS-Leon-Sprenger") {
+        } else if (subcommand === "ls-leon-sprenger") {
             const embed = createEmbed({ title: "Viewing Ls|Leon Sprenger's socials", description: "Failed to execute /socials. **No links specified**", color: "#ff0000" })
         }
       await InteractionHelper.safeEditReply(interaction, { embeds: [embed] });
