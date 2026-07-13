@@ -95,3 +95,60 @@
 		]
 	}
 }
+
+import { SlashCommandBuilder, version, MessageFlags } from 'discord.js';
+import { createEmbed } from '../../utils/embeds.js';
+import { logger } from '../../utils/logger.js';
+
+import { InteractionHelper } from '../../utils/interactionHelper.js';
+export default {
+    data: new SlashCommandBuilder()
+    .setName("mysticvanilla")
+    .setDescription("Infos about MysticVanilla")
+    .addSubcommand((subcommand) =>
+        subcommand
+            .setName("status")
+            .setDescription("Server Status")
+    )
+    .addSubcommand((subcommand) =>
+        subcommand
+            .setName("discord")
+            .setDescription("Get Discord link")
+    ),
+
+  async execute(interaction) {
+    try {
+      await InteractionHelper.safeDefer(interaction);
+      const ip = "mysticvanilla.de";
+      const { options, guild, member } = interaction;
+      const subcommand = options.getSubcommand();
+
+        if (subcommand === "status") {
+      const res = fetch(`https://api.mcsrvstat.us/3/${ip}`);
+	  const data = JSON.parse(res);
+	  if(!data) return;
+	  if(!data.online) {
+	  logger.error('McSrv command error:', error);
+      return InteractionHelper.safeEditReply(interaction, {
+        embeds: [createEmbed({ title: 'Server offline', description: 'Could not fetch server info.', color: 'error' })],
+        flags: MessageFlags.Ephemeral,
+      });
+      const embed = createEmbed   ({ title: "Server statistics for **MysticVanilla.de**", description: "Displaying server infos", color: "#bfff00" }).addFields
+      await InteractionHelper.safeEditReply(interaction, { embeds: [embed] });
+        } else if (subcommand === "ls-leon-sprenger") {
+            const embed = createEmbed({ title: "Viewing Ls|Leon Sprenger's socials", description: "Failed to execute /socials. **No links specified**", color: "#ff0000" });
+            
+      await InteractionHelper.safeEditReply(interaction, { embeds: [embed] });
+        }
+    } catch (error) {
+      logger.error('Stats command error:', error);
+      return InteractionHelper.safeEditReply(interaction, {
+        embeds: [createEmbed({ title: 'System Error', description: 'Could not fetch socials.', color: 'error' })],
+        flags: MessageFlags.Ephemeral,
+      });
+    }
+  },
+};
+
+
+
