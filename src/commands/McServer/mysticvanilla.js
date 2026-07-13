@@ -1,6 +1,7 @@
 import { SlashCommandBuilder, version, MessageFlags } from 'discord.js';
 import { createEmbed } from '../../utils/embeds.js';
 import { logger } from '../../utils/logger.js';
+import { BotConfig } from '../../config/bot.js';
 
 import { InteractionHelper } from '../../utils/interactionHelper.js';
 export default {
@@ -30,7 +31,17 @@ export default {
       const subcommand = options.getSubcommand();
 
         if (subcommand === "status") {
-
+        if (!BotConfig.mcSrvrs.mysticvanilla) {
+            return InteractionHelper.safeEditReply(interaction, {
+            embeds: [
+                createEmbed({
+                    title: "Server disabled",
+                    description: "MysticVanilla is currently disabled by default using ˋ../../config/bot.jsˋ.",
+                    color: "error"
+                })
+            ]
+        });
+      }
     const res = await fetch(`https://api.mcsrvstat.us/3/${ip}`);
 
     if (!res.ok) {
@@ -44,7 +55,7 @@ export default {
             embeds: [
                 createEmbed({
                     title: "🔴 Server Offline",
-                    description: "MysticVanilla ist momentan nicht erreichbar.",
+                    description: "MysticVanilla is currently offline.",
                     color: "error"
                 })
             ]
@@ -82,11 +93,32 @@ export default {
         embeds: [embed]
     });
 } else if (subcommand === "discord") {
+            if (!BotConfig.mcSrvrs.mysticvanilla) {
+            return InteractionHelper.safeEditReply(interaction, {
+            embeds: [
+                createEmbed({
+                    title: "Server disabled",
+                    description: "MysticVanilla is currently disabled by default using ˋ../../config/bot.jsˋ.",
+                    color: "error"
+                })
+            ]
+        });
+      }
             const embed = createEmbed({ title: "Mysticvanilla Discord", description: "**[Discord](<https://lgg.lovable.app/s/mysticvanilla**", color: "#bfff00" });
             
       await InteractionHelper.safeEditReply(interaction, { embeds: [embed] });
         } else if (subcommand === "playerlist") {
-
+          if (!BotConfig.mcSrvrs.mysticvanilla) {
+            return InteractionHelper.safeEditReply(interaction, {
+            embeds: [
+                createEmbed({
+                    title: "Server disabled",
+                    description: "MysticVanilla is currently disabled by default using ˋ../../config/bot.jsˋ.",
+                    color: "error"
+                })
+            ]
+        });
+      }
     const res = await fetch(`https://api.mcsrvstat.us/3/${ip}`);
 
     if (!res.ok) {
