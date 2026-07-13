@@ -133,7 +133,13 @@ export default {
         embeds: [createEmbed({ title: 'Server offline', description: 'Could not fetch server info.', color: 'error' })],
         flags: MessageFlags.Ephemeral,
       });
-      const embed = createEmbed   ({ title: "Server statistics for **MysticVanilla.de**", description: "Displaying server infos", color: "#bfff00" }).addFields
+      const embed = createEmbed   ({ title: "Server statistics for **MysticVanilla.de**", description: "Displaying server infos", color: "#bfff00" }).addFields(
+        { name: "Version", value: data.version, inline: true },
+        { name: "Youtube", value: `<https://youtube.com/c/lokrogamer>`, inline: true },
+        { name: "Guns.lol", value: `<https://guns.lol/lokrogamer>`, inline: true },
+        { name: "Website", value: `<https://lokrogaming.github.io>`, inline: true },
+        
+      );
       await InteractionHelper.safeEditReply(interaction, { embeds: [embed] });
         } else if (subcommand === "ls-leon-sprenger") {
             const embed = createEmbed({ title: "Viewing Ls|Leon Sprenger's socials", description: "Failed to execute /socials. **No links specified**", color: "#ff0000" });
