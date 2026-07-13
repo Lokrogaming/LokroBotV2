@@ -17,7 +17,11 @@ export default {
             .setName("discord")
             .setDescription("Get Discord link")
     ),
-
+    .addSubcommand((subcommand) =>
+    subcommand
+        .setName("playerlist")
+        .setDescription("Shows the online players")
+)
   async execute(interaction) {
     try {
       await InteractionHelper.safeDefer(interaction);
@@ -81,7 +85,51 @@ export default {
             const embed = createEmbed({ title: "Mysticvanilla Discord", description: "**[Discord](<https://lgg.lovable.app/s/mysticvanilla**", color: "#bfff00" });
             
       await InteractionHelper.safeEditReply(interaction, { embeds: [embed] });
+        } else if (subcommand === "playerlist") {
+
+    const res = await fetch(`https://api.mcsrvstat.us/3/${ip}`);
+
+    if (!res.ok) {
+        throw new Error(`HTTP ${res.status}`);
+    }
+
+    const data = await res.json();
+
+    if (!data.online) {
+        return InteractionHelper.safeEditReply(interaction, {
+            embeds: [
+                createEmbed({
+                    title: "🔴 Server Offline",
+                    description: "MysticVanilla is currently offline.",
+                    color: "error"
+                })
+            ]
+        });
+    }
+
+    const playerList =
+        data.players?.list?.length
+            ? data.players.list
+                  .map((player) => `• **${player.name}**`)
+                  .join("\n")
+            : "No players are currently online.";
+
+    const embed = createEmbed({
+        title: "👥 Online Players",
+        description: playerList,
+        color: "#bfff00",
+    }).addFields(
+        {
+            name: "Players",
+            value: `${data.players.online}/${data.players.max}`,
+            inline: true,
         }
+    );
+
+    return InteractionHelper.safeEditReply(interaction, {
+        embeds: [embed],
+    });
+}
     } catch (error) {
       logger.error('Stats command error:', error);
       return InteractionHelper.safeEditReply(interaction, {
