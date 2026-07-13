@@ -124,25 +124,59 @@ export default {
       const subcommand = options.getSubcommand();
 
         if (subcommand === "status") {
-      const res = fetch(`https://api.mcsrvstat.us/3/${ip}`);
-	  const data = JSON.parse(res);
-	  if(!data) return;
-	  if(!data.online) {
-	  logger.error('McSrv command error:', error);
-      return InteractionHelper.safeEditReply(interaction, {
-        embeds: [createEmbed({ title: 'Server offline', description: 'Could not fetch server info.', color: 'error' })],
-        flags: MessageFlags.Ephemeral,
-      });
-      const embed = createEmbed   ({ title: "Server statistics for **MysticVanilla.de**", description: "Displaying server infos", color: "#bfff00" }).addFields(
-        { name: "Version", value: data.version, inline: true },
-        { name: "Youtube", value: `<https://youtube.com/c/lokrogamer>`, inline: true },
-        { name: "Guns.lol", value: `<https://guns.lol/lokrogamer>`, inline: true },
-        { name: "Website", value: `<https://lokrogaming.github.io>`, inline: true },
-        
-      );
-      await InteractionHelper.safeEditReply(interaction, { embeds: [embed] });
-        } else if (subcommand === "ls-leon-sprenger") {
-            const embed = createEmbed({ title: "Viewing Ls|Leon Sprenger's socials", description: "Failed to execute /socials. **No links specified**", color: "#ff0000" });
+
+    const res = await fetch(`https://api.mcsrvstat.us/3/${ip}`);
+
+    if (!res.ok) {
+        throw new Error(`HTTP ${res.status}`);
+    }
+
+    const data = await res.json();
+
+    if (!data.online) {
+        return InteractionHelper.safeEditReply(interaction, {
+            embeds: [
+                createEmbed({
+                    title: "🔴 Server Offline",
+                    description: "MysticVanilla ist momentan nicht erreichbar.",
+                    color: "error"
+                })
+            ]
+        });
+    }
+
+    const embed = createEmbed({
+        title: "MysticVanilla Status",
+        description: "Aktuelle Serverinformationen",
+        color: "#bfff00"
+    }).addFields(
+        {
+            name: "Version",
+            value: data.version ?? "Unbekannt",
+            inline: true
+        },
+        {
+            name: "Spieler",
+            value: `${data.players.online}/${data.players.max}`,
+            inline: true
+        },
+        {
+            name: "Software",
+            value: data.software ?? "Unbekannt",
+            inline: true
+        },
+        {
+            name: "MOTD",
+            value: data.motd?.clean?.join("\n") || "Keine",
+            inline: false
+        }
+    );
+
+    return InteractionHelper.safeEditReply(interaction, {
+        embeds: [embed]
+    });
+} else if (subcommand === "discord") {
+            const embed = createEmbed({ title: "Mysticvanilla Discord", description: "**[Discord](<https://lgg.lovable.app/s/mysticvanilla**", color: "#bfff00" });
             
       await InteractionHelper.safeEditReply(interaction, { embeds: [embed] });
         }
