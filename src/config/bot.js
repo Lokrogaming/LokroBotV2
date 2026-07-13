@@ -461,6 +461,10 @@ export const botConfig = {
     community: true,
     fun: true,
   },
+  mcSrvrs: {
+    mysticvanilla: true,
+    minehut_unlimited: false,
+  },
 };
 
 
