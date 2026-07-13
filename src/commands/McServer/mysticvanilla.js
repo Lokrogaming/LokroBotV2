@@ -16,12 +16,12 @@ export default {
         subcommand
             .setName("discord")
             .setDescription("Get Discord link")
-    ),
+    )
     .addSubcommand((subcommand) =>
     subcommand
         .setName("playerlist")
         .setDescription("Shows the online players")
-)
+),
   async execute(interaction) {
     try {
       await InteractionHelper.safeDefer(interaction);
