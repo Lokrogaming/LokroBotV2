@@ -104,7 +104,7 @@ export default {
             ]
         });
       }
-            const embed = createEmbed({ title: "Mysticvanilla Discord", description: "**[Discord](<https://lgg.lovable.app/s/mysticvanilla**", color: "#bfff00" });
+            const embed = createEmbed({ title: "Mysticvanilla Discord", description: "**[Discord](<https://lgg.lovable.app/s/mysticvanilla>)**", color: "#bfff00" });
             
       await InteractionHelper.safeEditReply(interaction, { embeds: [embed] });
         } else if (subcommand === "playerlist") {
