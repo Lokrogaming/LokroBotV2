@@ -18,7 +18,7 @@ const configuredTables = {
     verification_audit: 'verification_audit',
     temp_data: 'temp_data',
     cache_data: 'cache_data',
-    partner_data: 'partner_data',
+    
 };
 
 const allowedTableIdentifiers = new Set([
@@ -38,7 +38,6 @@ const allowedTableIdentifiers = new Set([
     'verification_audit',
     'temp_data',
     'cache_data',
-    'partner_data',
 ]);
 
 const validatedTables = Object.fromEntries(
@@ -105,7 +104,7 @@ export const pgConfig = {
         
         birthday: null,
 
-        partner: null,
+        
     },
     
     features: {
